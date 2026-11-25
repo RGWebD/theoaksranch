@@ -249,5 +249,20 @@
     location.href = `mailto:theoaksranchbarnweddings@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
+  /* ---------- Testimonial rotator (pauses on hover/focus; no autoplay with reduced motion) ---------- */
+  const tq = $("[data-tq]");
+  if (tq) {
+    const its = $$(".tq__item", tq), dots = $$(".tq__dot");
+    let k = 0, timer = null;
+    const showQ = (n) => { k = (n + its.length) % its.length; its.forEach((it, i) => it.classList.toggle("is-on", i === k)); dots.forEach((d, i) => d.setAttribute("aria-current", i === k ? "true" : "false")); };
+    const play = () => { if (!reduce && !timer) timer = setInterval(() => showQ(k + 1), 6500); };
+    const stop = () => { clearInterval(timer); timer = null; };
+    dots.forEach((d, i) => d.addEventListener("click", () => { showQ(i); stop(); play(); }));
+    const wrapQ = tq.closest("section");
+    wrapQ.addEventListener("mouseenter", stop); wrapQ.addEventListener("mouseleave", play);
+    wrapQ.addEventListener("focusin", stop); wrapQ.addEventListener("focusout", play);
+    play();
+  }
+
   const yr = $("[data-year]"); if (yr) yr.textContent = new Date().getFullYear();
 })();
