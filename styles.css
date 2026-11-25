@@ -691,7 +691,7 @@ p{margin:0 0 1.1em}
 
 /* ===== The Oaks Ranch additions ===== */
 .credit{position:absolute;right:10px;bottom:8px;z-index:3;margin:0;font:500 9px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.7);pointer-events:none}
-.step__img,.teaser__img,.collage figure,.phero__media figure{position:relative}
+.step__img{position:relative}
 .tiers--two{grid-template-columns:repeat(2,1fr);max-width:900px;margin-inline:auto}
 .tier__perfect.c{text-align:center}
 .events--4{grid-template-columns:repeat(4,1fr)}
